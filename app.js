@@ -5,6 +5,18 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+const convertImoticon = (who) => {
+    if (who === "가위") {
+        return "✌️"
+    }
+    else if (who === "바위") {
+        return "✊"
+    }
+    else {
+        return "🤚"
+    }
+}
+
 client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매개변수를 받고 실행할 함수
   if (msg.content === "야") { // Discord.Message 객체의 content 프로퍼티가 'ping' 일 때
     msg.reply("호!"); // reply 는 멘션 + , msg 로 출력됩니다.
@@ -31,7 +43,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
 
     const result =
 `
-사람: ${human} VS 봇: ${bot}
+사람: ${convertImoticon(human)}  VS  봇: ${convertImoticon(bot)}
 ${winner === "비김" ? "우리는 비겼다 인간." : winner + "의 승리다"}
 `
 
