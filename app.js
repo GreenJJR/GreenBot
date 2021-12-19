@@ -44,10 +44,9 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
     const result =
 `
 사람: ${convertImoticon(human)}  VS  봇: ${convertImoticon(bot)}
-${winner === "비김" ? "우리는 비겼다 인간." : winner + "의 승리다"}
+
+${winner === "비김" ? "무승부 입니다." : "승자: " + winner}
 `
-
-
     msg.reply(result);
   }
 });
