@@ -1,14 +1,23 @@
 {
-  "name": "green-bot",
-  "version": "1.0.0",
-  "description": "GreenBot is made by GreenSoft",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "GreenSoft"
-  ],
-  "author": "GreenSoft",
-  "license": "ISC"
-}
+    "name": "greensoft-discord-bot",
+    "version": "1.0.0",
+    "description": "discord bot",
+    "main": "app.js",
+    "dependencies": {
+      "axios": "^0.19.2",
+      "discord.js": "^12.0.1",
+      "mathjs": "^6.6.4",
+      "node-fetch": "^2.6.0",
+      "ytdl-core": "^2.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+      "discord",
+      "javascript",
+      "nodejs"
+    ],
+    "author": "JoRim",
+  }
