@@ -32,7 +32,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
   const user = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
   const today = new Date();
-  const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
+  today.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
   const howMuch = 1 + Math.floor(Math.random() * 99);
 
@@ -43,7 +43,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
   if(msg.content === "!췕" || msg.content === "!출첵" || msg.content === "!출석체크") {
     let saveUser = {};
     if(user.id) {
-      if(user.date === date) {
+      if(user.today === today) {
         msg.reply(`오늘은 이미 받았네? 내일 다시 받아!`);
         saveUser = user; // 유저 정보를 바꾸지 않고 저장할거임.
       }
@@ -52,14 +52,14 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
         saveUser = {
           id,
           name,
-          date,
+          today,
           money : user.money + howMuch,
         };
       }
     }
     else {
       msg.reply(`시작하는걸 환영해! ${howMuch}원을 줄게!`);
-      saveUser = {id, name, date, money : howMuch};
+      saveUser = {id, name, today, money : howMuch};
     }
     fs.writeFileSync(filePath, JSON.stringify(saveUser));
   }
