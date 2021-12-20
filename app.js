@@ -57,29 +57,25 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
         };
       }
     }
-
-    if(msg.content === "!지갑"){
-      if (user.id){
-        const embed = new Discord.MessageEmbed()
-        .setAuthor("초록봇", "https://yt3.ggpht.com/J8ldYsbmlo8V8Ttq1hNYUa09qM-m-50j-rxhuq1XwJ1hA8J3Sum70bo4_JQVSS19COPaLTYneA=s900-c-k-c0x00ffffff-no-rj")
-        .setTitle(`${name}의 지갑`)
-        .setColor(0x00FF00)
-        .setDescription(`${money} 💵`)
-        .setThumbnail("https://picsum.photos/512/512")
-        .setTimestamp(new Date())
-        
-        msg.channel.send(embed);
-      }
-      
-    }
-
     else {
       msg.reply(`시작하는걸 환영해! ${howMuch}원을 줄게!`);
       saveUser = {id, name, date, money : howMuch};
     }
-
     fs.writeFileSync(filePath, JSON.stringify(saveUser));
+  }
 
+  if(msg.content === "!지갑"){
+    if (user.id){
+      const embed = new Discord.MessageEmbed()
+      .setAuthor("초록봇", "https://yt3.ggpht.com/J8ldYsbmlo8V8Ttq1hNYUa09qM-m-50j-rxhuq1XwJ1hA8J3Sum70bo4_JQVSS19COPaLTYneA=s900-c-k-c0x00ffffff-no-rj")
+      .setTitle(`${name}의 지갑`)
+      .setColor(0x00FF00)
+      .setDescription(`${money} 💵`)
+      .setThumbnail("https://picsum.photos/512/512")
+      .setTimestamp(new Date())
+      
+      msg.channel.send(embed);
+    }
   }
 
   if (msg.content === "!가위" || msg.content === "!바위" || msg.content === "!보") {
