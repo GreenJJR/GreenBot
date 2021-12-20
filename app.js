@@ -7,13 +7,13 @@ client.on('ready', () => {
 });
 
 const convertImoticon = (who) => {
-    if (who === "가위" || who === "!가위") {
+    if (who === "가위") {
         return "✌️"
     }
-    else if (who === "바위" || who === "!바위") {
+    else if (who === "바위") {
         return "✊"
     }
-    else if (who === "보" || who === "!보") {
+    else if (who === "보") {
         return "🤚"
     }
 }
@@ -79,9 +79,9 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
         winner = "비김";
     }
     else{
-        human === "!가위"? (winner = bot === "바위" ? "봇" : "인간") : "";
-        human === "!바위"? (winner = bot === "보" ? "봇" : "인간") : "";
-        human === "!보"? (winner = bot === "가위" ? "봇" : "인간") : "";
+        human === "가위"? (winner = bot === "바위" ? "봇" : "인간") : "";
+        human === "바위"? (winner = bot === "보" ? "봇" : "인간") : "";
+        human === "보"? (winner = bot === "가위" ? "봇" : "인간") : "";
         // 승자를 winner 변수에 넣어주는 로직임.
     }
 
