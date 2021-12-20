@@ -73,7 +73,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       .setDescription(`${user.money} 💵`)
       .setThumbnail("https://picsum.photos/512/512")
       .setTimestamp(new Date())
-      .setFooter(message.author.toString())
+      .setFooter(`${name}`)
       
       msg.channel.send(embed);
     }else {
@@ -84,7 +84,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       .setDescription(`0 💵`)
       .setThumbnail("https://picsum.photos/512/512")
       .setTimestamp(new Date())
-      .setFooter(message.author.toString())
+      .setFooter(`${name}`)
       
       msg.channel.send(embed);
     }
