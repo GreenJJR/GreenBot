@@ -67,7 +67,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
   }
 
   if (msg.content === "!가위" || msg.content === "!바위" || msg.content === "!보") {
-    const human = msg.content;
+    const human = msg.content.substring(1, 3);
     const list = ["가위", "바위", "보"];
     const random = Math.floor(Math.random() * 3);
 
