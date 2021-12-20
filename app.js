@@ -70,9 +70,17 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       .setAuthor("초록봇", "https://yt3.ggpht.com/J8ldYsbmlo8V8Ttq1hNYUa09qM-m-50j-rxhuq1XwJ1hA8J3Sum70bo4_JQVSS19COPaLTYneA=s900-c-k-c0x00ffffff-no-rj")
       .setTitle(`${name}의 지갑`)
       .setColor(0x00FF00)
-      .setDescription(`${money} 💵`)
+      .setDescription(`${user.money} 💵`)
       .setThumbnail("https://picsum.photos/512/512")
       .setTimestamp(new Date())
+      
+      msg.channel.send(embed);
+    }else {
+      const embed = new Discord.MessageEmbed()
+      .setAuthor("초록봇", "https://yt3.ggpht.com/J8ldYsbmlo8V8Ttq1hNYUa09qM-m-50j-rxhuq1XwJ1hA8J3Sum70bo4_JQVSS19COPaLTYneA=s900-c-k-c0x00ffffff-no-rj")
+      .setTitle(`${name}의 지갑`)
+      .setColor(0xFE2E2E)
+      .setDescription(`비어있넹..`)
       
       msg.channel.send(embed);
     }
