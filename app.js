@@ -33,6 +33,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
 
   const today = new Date();
   today.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+  const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
 
   const howMuch = 1 + Math.floor(Math.random() * 99);
 
@@ -41,7 +42,6 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
     .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
     .setTitle("안녕?")
     .setColor(0x58FAF4)
-    .setFooter(`반가워!`)
     
     msg.channel.send(embed);
   }
@@ -49,7 +49,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
   if(msg.content === "!췕" || msg.content === "!출첵" || msg.content === "!출석체크") {
     let saveUser = {};
     if(user.id) {
-      if(user.today === today) {
+      if(user.date === date) {
         const embed = new Discord.MessageEmbed()
         .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
         .setTitle("출석체크 실패")
@@ -76,7 +76,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
         saveUser = {
           id,
           name,
-          today,
+          date,
           money : user.money + howMuch,
         };
       }
@@ -92,7 +92,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       .setFooter(`${name}`)
       
       msg.channel.send(embed);
-      saveUser = {id, name, today, money : howMuch};
+      saveUser = {id, name, date, money : howMuch};
     }
     fs.writeFileSync(filePath, JSON.stringify(saveUser));
   }
