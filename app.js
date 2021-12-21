@@ -3,6 +3,7 @@ const fs = require('fs');
 const client = new Discord.Client();
 
 client.on('ready', () => {
+  client.user.setActivity('코드', { type: 'WATCHING' })
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
