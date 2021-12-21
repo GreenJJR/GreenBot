@@ -37,14 +37,19 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
   const howMuch = 1 + Math.floor(Math.random() * 99);
 
   if (msg.content === "!안녕") { // Discord.Message 객체의 content 프로퍼티가 'ping' 일 때
-    msg.reply("안녕!"); // reply 는 멘션 + , msg 로 출력됩니다.
+    const embed = new Discord.MessageEmbed()
+    .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
+    .setTitle("안녕?")
+    .setColor(0x58FAF4)
+    .setFooter(`반가워!`)
+    
+    msg.channel.send(embed);
   }
 
   if(msg.content === "!췕" || msg.content === "!출첵" || msg.content === "!출석체크") {
     let saveUser = {};
     if(user.id) {
       if(user.today === today) {
-        msg.reply(`오늘은 이미 받았네? 내일 다시 받아!`);
         const embed = new Discord.MessageEmbed()
         .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
         .setTitle("출석체크 실패")
@@ -77,7 +82,16 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       }
     }
     else {
-      msg.reply(`시작하는걸 환영해! ${howMuch}원을 줄게!`);
+      const embed = new Discord.MessageEmbed()
+      .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
+      .setTitle("FIRST 출석체크 성공")
+      .setColor(0x00FF00)
+      .setDescription(`${user.money} 💵 -> ${user.money + howMuch} 💵`)
+      .setThumbnail("https://picsum.photos/512/512")
+      .setTimestamp(new Date())
+      .setFooter(`${name}`)
+      
+      msg.channel.send(embed);
       saveUser = {id, name, today, money : howMuch};
     }
     fs.writeFileSync(filePath, JSON.stringify(saveUser));
