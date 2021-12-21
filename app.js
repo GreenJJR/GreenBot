@@ -45,10 +45,29 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
     if(user.id) {
       if(user.today === today) {
         msg.reply(`오늘은 이미 받았네? 내일 다시 받아!`);
+        const embed = new Discord.MessageEmbed()
+        .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
+        .setTitle("출석체크 실패")
+        .setColor(0xFF8000)
+        .setDescription(`이미 출석체크를 완료 했습니다!`)
+        .setThumbnail("https://picsum.photos/512/512")
+        .setTimestamp(new Date())
+        .setFooter(`${name}`)
+        
+        msg.channel.send(embed);
         saveUser = user; // 유저 정보를 바꾸지 않고 저장할거임.
       }
       else {
-        msg.reply(`${howMuch} 💵 이 지급됐어!\n${name}의 현재 잔액은 ${user.money} -> ${user.money + howMuch}이야!`);
+        const embed = new Discord.MessageEmbed()
+        .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
+        .setTitle("출석체크 성공")
+        .setColor(0x00FF00)
+        .setDescription(`${user.money} 💵 -> ${user.money + howMuch} 💵`)
+        .setThumbnail("https://picsum.photos/512/512")
+        .setTimestamp(new Date())
+        .setFooter(`${name}`)
+        
+        msg.channel.send(embed);
         saveUser = {
           id,
           name,
