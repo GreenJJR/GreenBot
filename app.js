@@ -86,7 +86,7 @@ client.on('message', msg => { // message 이벤트시 msg (Discord.Message) 매�
       .setAuthor("초록봇", "https://i.ibb.co/Dr8zZ3W/discord.png")
       .setTitle("FIRST 출석체크 성공")
       .setColor(0x00FF00)
-      .setDescription(`${user.money} 💵 -> ${user.money + howMuch} 💵`)
+      .setDescription(`0 💵 -> ${howMuch} 💵`)
       .setThumbnail("https://picsum.photos/512/512")
       .setTimestamp(new Date())
       .setFooter(`${name}`)
